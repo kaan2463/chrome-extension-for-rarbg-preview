@@ -9,11 +9,13 @@ function getAllImageSrc(){
     var array=[];
 
     for(index=0;index<links.length;index++){
-        var str=links[index].getElementsByTagName('td')[1]
-        .getElementsByTagName('a')[0]
-        .getAttribute('onmouseover');
-        var src = str.substring(27,str.length-14);
-        array.push(src);
+        var aAttr= links[index].getElementsByTagName('td')[1]
+        .getElementsByTagName('a')[0];
+        var str=aAttr.getAttribute('onmouseover');
+        var aHref=aAttr.getAttribute('href');
+
+        var imgSrc = str.substring(27,str.length-14);
+        array.push({imgSrc:imgSrc,aHref:'http://rarbg.to'+aHref});
     }
     return array;
 }
